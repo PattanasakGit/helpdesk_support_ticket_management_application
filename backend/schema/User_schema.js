@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     U_PHONE: { type: String, required: true },
     USER_EMAIL: { type: String, required: true },
     U_IMG: { type: String},
-    U_REGISTER: {type: Timestamp, required: true},
+    U_REGISTER: {type: Date, required: true},
 });
 
 const UserModel = mongoose.model(str_collection, userSchema);

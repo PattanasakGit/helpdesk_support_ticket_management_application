@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { insertData, getData, updateData, getDataById, getUserBy_Email, getNextDataId } = require('../Database');
+const { insertData, getData, updateData, getDataById, getUserBy_Email, getNextDataId } = require('./Database');
 const StatusModel = require('../schema/Status_schema');
 
 const DataModel = StatusModel;

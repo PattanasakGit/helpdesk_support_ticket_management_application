@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const uri = 'mongodb://127.0.0.1:27017/Final_Project';
+const url = 'mongodb+srv://Thepat:Thepat347@helpdesk-support-ticket.q6owbmy.mongodb.net/Project?retryWrites=true&w=majority'
 
 //------------ ฟังก์ชันสำหรับ เปิดและปิดการเชื่อมต่อกับฐานข้อมูล  ----------------
 async function connectDatabase() {
   try {
-    await mongoose.connect(uri, {
+    await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -127,6 +127,6 @@ module.exports = {
   // deleteData,
   getDataById,
   getNextDataId,
-  getToken_check,
+  // getToken_check,
   getData_By_USER_Email
 };
