@@ -13,4 +13,18 @@ const userSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model(str_collection, userSchema);
 
+//=========================== เพิ่ม validator ใน Schema===================================
+
+userSchema.path('USER_EMAIL').validate(function (email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }, 'Invalid Email Format');
+  
+  userSchema.path('U_PHONE').validate(function (phone) {
+    const phoneRegex = /^[0-9]+$/;
+    return phoneRegex.test(phone);
+  }, 'Invalid PhoneNumber Format');
+  
+  //=========================== เพิ่ม validator ใน Schema===================================
+
 module.exports = UserModel;
