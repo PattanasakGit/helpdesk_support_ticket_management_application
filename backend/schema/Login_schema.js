@@ -6,7 +6,7 @@ const loginSchema = new mongoose.Schema({
     USER_EMAIL: { type: String, required: true },
     PASSWORD: { type: String, required: true },
     ROLE: { type: String, enum: ['USER', 'ADMIN'], default: 'USER' },
-});
+}, { versionKey: false });
 
 const LoginModel = mongoose.model(str_collection, loginSchema);
 

@@ -10,16 +10,7 @@ const ticketSchema = new mongoose.Schema({
     CREATE_TIME: { type: Date, required: true },
     UPDATE_TIME: { type: Date, required: true },
     USER_EMAIL: { type: String, required: true },
-});
+}, { versionKey: false });
 const TicketModel = mongoose.model(str_collection, ticketSchema);
-
-//=========================== เพิ่ม validator ใน Schema===================================
-
-ticketSchema.path('USER_EMAIL').validate(function (email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}, 'Invalid Email Format');
-
-//=========================== เพิ่ม validator ใน Schema===================================
 
 module.exports = TicketModel;

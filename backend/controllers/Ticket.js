@@ -1,14 +1,21 @@
 const mongoose = require('mongoose');
+const { Validation_Ticket } = require('./Validation');
 const { insertData, getData, updateData, getDataById, getUserBy_Email, getNextDataId } = require('./Database');
 const TicketModel = require('../schema/Tricket_schema');
-
 const DataModel = TicketModel;
 
 async function CreateTicket(req, res) {
     try {
         const Ticket = req.body;
+        //--------------------------------  ตรวสอบข้อมูลก่อนการบันทึก -----------------------------------------
+        const validationMessage = Validation_Ticket(Ticket);
+        if (validationMessage) {
+            console.log('\nCannot Create Ticket  ==> ' + validationMessage);
+            return res.status(400).json({ message: validationMessage });
+        }
+        //------------------------------------------------------------------------------------------------
         Ticket.ID = await getNextDataId(DataModel); // สร้าง ID ขึ้นมาใหม่เพื่อใช้แทน _id ของ mongoDB เพื่อให้อ่านและจัดการกับ ID ได้ง่าย
-        Ticket.CREATE_TIME = new Date().getTime(); // เก็บค่า Timestamp ลงฐานข้อมูลตอนสร้าง Ticket ใหม่
+        Ticket.CREATE_TIME = new Date().getTime();
         Ticket.UPDATE_TIME = Ticket.CREATE_TIME; // สร้างครั้งแรกเวลาแก้ไขล่าสุดจะเท่ากับเวลาสร้าง
 
         await insertData(Ticket, DataModel);
@@ -25,6 +32,14 @@ async function UpdateTicket(req, res) {
     try {
         const { id } = req.params;
         const newData = req.body;
+        //--------------------------------  ตรวสอบข้อมูลก่อนการบันทึก -----------------------------------------
+        const validationMessage = Validation_Ticket(newData);
+        if (validationMessage) {
+            console.log('\nCannot Update Ticket ==> ' + validationMessage);
+            return res.status(400).json({ message: validationMessage });
+        }
+        //------------------------------------------------------------------------------------------------
+
         newData.UPDATE_TIME = new Date().getTime();
 
         await updateData(id, newData, DataModel);
