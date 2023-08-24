@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Validation_Status } = require('./Validation');
 const { insertData, getData, updateData, getDataById, getUserBy_Email, getNextDataId } = require('./Database');
 const StatusModel = require('../schema/Status_schema');
 
@@ -7,9 +8,16 @@ const DataModel = StatusModel;
 async function CreateStatus(req, res) {
     try {
         const Status = req.body;
+        //--------------------------------  ตรวสอบข้อมูลก่อนการบันทึก -----------------------------------------
+        const validationMessage = Validation_Status(Status);
+        if (validationMessage) {
+            console.log('errors : ' + validationMessage);
+            return res.status(400).json({ message: validationMessage });
+        }
+        //------------------------------------------------------------------------------------------------
         Status.ID = await getNextDataId(DataModel); // สร้าง ID ขึ้นมาใหม่เพื่อใช้แทน _id ของ mongoDB เพื่อให้อ่านและจัดการกับ ID ได้ง่าย
-        Status.CREATE_TIME = new Date().getTime(); // เก็บค่า Timestamp ลงฐานข้อมูลตอนสร้าง Status ใหม่
-        Status.UPDATE_TIME = Status.CREATE_TIME; // สร้างครั้งแรกเวลาแก้ไขล่าสุดจะเท่ากับเวลาสร้าง
+        Status.CREATE_TIME = new Date().getTime(); 
+        Status.UPDATE_TIME = Status.CREATE_TIME;
 
         await insertData(Status, DataModel);
 
@@ -25,6 +33,13 @@ async function UpdateStatus(req, res) {
     try {
         const { id } = req.params;
         const newData = req.body;
+        //--------------------------------  ตรวสอบข้อมูลก่อนการบันทึก -----------------------------------------
+        const validationMessage = Validation_Status(newData);
+        if (validationMessage) {
+            console.log('errors : ' + validationMessage);
+            return res.status(400).json({ message: validationMessage });
+        }
+        //------------------------------------------------------------------------------------------------
         newData.UPDATE_TIME = new Date().getTime();
 
         await updateData(id, newData, DataModel);
