@@ -1,0 +1,100 @@
+/* NavBar.css */
+@import url('https://fonts.googleapis.com/css2?family=Krub&family=Noto+Sans+Thai&display=swap');
+
+.container_NavBar {
+    background-color: #ffffff94;
+    height: 50px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%; 
+    backdrop-filter: blur(50px);
+}
+
+
+.Logo {
+    height: 120%;
+    width: auto;
+    border-radius: 10px;
+    margin-right: 1rem;
+    /* position: absolute;
+    left: 0; */
+    
+    /* justify-content: start; */
+    /* filter: drop-shadow(5px 5px 1px #000000); */
+}
+
+.dropdown_menu {
+    display: flex;
+    text-align: center;
+    margin-top: 10px !important;
+    width: 250px;
+    /* height: 250px; */
+
+}
+
+/*================================ ส่วนของการแก้ไข antdesign ===============================*/
+.ant-dropdown .ant-dropdown-menu,
+.ant-dropdown-menu-submenu .ant-dropdown-menu {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+    padding: 10px;
+    display: block;
+    width: 250px;
+    list-style-type: none;
+    /* background-color: #ffbaba; */
+    background-color: #ffcae7;
+    background-clip: padding-box;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.507);
+    /* box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05); */
+}
+
+.ant-dropdown .ant-dropdown-menu {
+    inset: 4px auto auto 6% !important;
+}
+
+/*======================================================================================*/
+
+
+
+
+.NameProgram {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+.user_Profile {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 45px;
+}
+
+.user_Profile p {
+    margin: 0;
+}
+
+
+.btn_login {
+    background-image: linear-gradient(to right, #AA076B 0%, #61045F 51%, #AA076B 100%);
+    padding: 8px 20px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn_login:hover {
+    background-position: right center;
+}
