@@ -1,0 +1,38 @@
+
+.login_container{
+    height: 96.8vh;
+    width: 100%;
+    /* background-image: url('https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1704&q=80'); */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background: linear-gradient(49deg, #232C65 0%, #E21F76 100%);
+}
+.btn_login_page{
+    background: #970000;
+    height: 100px;
+    width: 200px;
+    margin: 10px;
+    
+}
+.btn_login_page:hover{
+    background: #868686;
+}
+
+.Card_Select_User{
+    background-color: #ffffff70;
+    width: 400px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 0px 20px;
+    border: 10px solid #0000000e; 
+}
+
+.Card_Select_User img {
+    width: 400px;
+}
+.Card_Select_User:hover{
+    scale: 1.1;
+    box-shadow: 4px 6px 16px 0 rgba(0, 0, 0, 0.507);
+}
