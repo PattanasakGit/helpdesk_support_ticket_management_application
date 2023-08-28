@@ -70,10 +70,10 @@ async function getDataById(id, DataModel) {
 }
 async function getData_By_USER_Email(email, DataModel) {
   try {
-    const data = await DataModel.findOne({ USER_EMAIL: email }).exec();
+    const data = await DataModel.find({ USER_EMAIL: email }).exec();
     return data;
   } catch (error) {
-    console.error('เกิดข้อผิดพลาดในการ Get User By Email', error);
+    console.error('เกิดข้อผิดพลาดในการ Get Data By Email', error);
     throw error;
   }
 }
@@ -92,31 +92,16 @@ async function getNextDataId(DataModel) {
   }
 }
 
-////==================== ฟังก์ชันสำหรับ DelteData เขียนเผื่อได้ใช้งานในอนาคต ==========================
-// async function deleteData(id, DataModel) {
-//   try {
-//     const result = await DataModel.deleteOne({ ID: id }).exec();
-//     console.log('Data deleted successfully:', result);
-//   } catch (error) {
-//     console.error('Failed to delete Data:', error);
-//     throw error;
-//   }
-// }
 
-
-
-// //-----------------------------------------------------------------------------------
-// async function getToken_check(Token, DataModel) {
-//   try {
-//     const data = await DataModel.findOne({ Token: Token }).exec();
-//     return data;
-//   } catch (error) {
-//     console.error('Failed to retrieve Data:', error);
-//     throw error;
-//   }
-// }
-
-
+async function deleteData(id, DataModel) {
+  try {
+    const result = await DataModel.deleteOne({ ID: id }).exec();
+    console.log('Data deleted successfully:', result);
+  } catch (error) {
+    console.error('Failed to delete Data:', error);
+    throw error;
+  }
+}
 
 module.exports = {
   connectDatabase,
@@ -124,9 +109,8 @@ module.exports = {
   insertData,
   getData,
   updateData,
-  // deleteData,
+  deleteData,
   getDataById,
   getNextDataId,
-  // getToken_check,
   getData_By_USER_Email
 };

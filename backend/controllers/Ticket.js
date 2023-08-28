@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Validation_Ticket } = require('./Validation');
-const { insertData, getData, updateData, getDataById, getUserBy_Email, getNextDataId } = require('./Database');
+const { insertData, getData, updateData, getDataById, getData_By_USER_Email, getNextDataId } = require('./Database');
 const TicketModel = require('../schema/Tricket_schema');
 const DataModel = TicketModel;
 
@@ -17,6 +17,7 @@ async function CreateTicket(req, res) {
         Ticket.ID = await getNextDataId(DataModel); // สร้าง ID ขึ้นมาใหม่เพื่อใช้แทน _id ของ mongoDB เพื่อให้อ่านและจัดการกับ ID ได้ง่าย
         Ticket.CREATE_TIME = new Date().getTime();
         Ticket.UPDATE_TIME = Ticket.CREATE_TIME; // สร้างครั้งแรกเวลาแก้ไขล่าสุดจะเท่ากับเวลาสร้าง
+        Ticket.TICKET_STATUS = "Pending"; //ทุกการสร้าง ticked ใหม่จะมีสถานะ Pending
 
         await insertData(Ticket, DataModel);
 
@@ -76,6 +77,21 @@ async function GetTicketById(req, res) {
         res.status(500).json({ error: error.message });
     }
 }
+async function GetTicketByEmail(req, res) {
+    try {
+        const { USER_EMAIL } = req.body;
+        const Ticket = await getData_By_USER_Email(USER_EMAIL, DataModel);
+
+        if (!Ticket) {
+            return res.status(404).json({ error: 'Ticket not found ' });
+        }
+
+        res.status(200).json(Ticket);
+    } catch (error) {
+        console.error('Failed to retrieve Ticket:', error);
+        res.status(500).json({ error: error.message });
+    }
+}
 
 ////==================== ฟังก์ชันสำหรับ Deltedate เขียนเผื่อได้ใช้งานในอนาคต ==========================
 // async function DeleteTicket(req, res) {
@@ -97,4 +113,5 @@ module.exports = {
     UpdateTicket,
     ListTicket,
     GetTicketById,
+    GetTicketByEmail,
 };

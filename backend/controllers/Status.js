@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Validation_Status } = require('./Validation');
-const { insertData, getData, updateData, getDataById, getUserBy_Email, getNextDataId } = require('./Database');
+const { insertData, getData, updateData, getDataById, deleteData, getNextDataId } = require('./Database');
 const StatusModel = require('../schema/Status_schema');
 
 const DataModel = StatusModel;
@@ -77,24 +77,24 @@ async function GetStatusById(req, res) {
     }
 }
 
-////==================== ฟังก์ชันสำหรับ Deltedat เขียนเผื่อได้ใช้งานในอนาคต ==========================
-// async function DeleteStatus(req, res) {
-//     try {
-//         const { id } = req.params;
+async function DeleteStatus(req, res) {
+    try {
+        const { id } = req.params;
 
-//         await deleteData(id, DataModel);
+        await deleteData(id, DataModel);
 
-//         console.log('Status deleted successfully');
-//         res.status(200).json({ status: true, message: 'Status deleted successfully' });
-//     } catch (error) {
-//         console.error('Failed to delete Status:', error);
-//         res.status(500).json({ error: error.message });
-//     }
-// }
+        console.log('Status deleted successfully');
+        res.status(200).json({ status: true, message: 'Status deleted successfully' });
+    } catch (error) {
+        console.error('Failed to delete Status:', error);
+        res.status(500).json({ error: error.message });
+    }
+}
 
 module.exports = {
     CreateStatus,
     UpdateStatus,
     ListStatus,
     GetStatusById,
+    DeleteStatus,
 };
