@@ -2,10 +2,14 @@
 
 ## Start Program
 To get started with the application, follow these steps:
-**1.Clone the Repository:** Clone this project repository
-**2.Install Dependencies** In the project directory, run `npm install` to install all necessary dependencies.
-**3.Start the Backend Server:** Go to `\backend` path Run `node app.js` to start the application server.
-**4.Start the Frontend Server:** Go to `\frontend` path Run `npm run dev` to start the application server.
+
+ 1. **.Clone the Repository:** Clone this project repository
+    
+ 2. **Install Dependencies** In the project directory, run `npm install` to install all necessary dependencies.
+    
+ 3. **Start the Backend Server:** Go to `\backend` path Run `node app.js` to start the application server.
+    
+ 4. **Start the Frontend Server:** Go to `\frontend` path Run `npm run dev` to start the application server.
 
 If you want to **Test Backend Server**
 Go to `\backend` path 
