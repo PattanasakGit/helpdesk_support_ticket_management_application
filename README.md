@@ -3,7 +3,7 @@
 ## Start Program
 To get started with the application, follow these steps:
 
- 1. **.Clone the Repository:** Clone this project repository
+ 1. **Clone the Repository:** Clone this project repository
     
  2. **Install Dependencies** In the project directory `\backend` and `\frontend`,
 		 run `npm install` to install all necessary dependencies.
