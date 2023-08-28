@@ -10,6 +10,7 @@ const ticketSchema = new mongoose.Schema({
     CREATE_TIME: { type: Date, required: true },
     UPDATE_TIME: { type: Date, required: true },
     USER_EMAIL: { type: String, required: true },
+    TICKET_STATUS: { type: String, required: true },
 }, { versionKey: false });
 const TicketModel = mongoose.model(str_collection, ticketSchema);
 

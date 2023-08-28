@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Krub&family=Noto+Sans+Thai&display=swap');
+
+.container_createTicket {
+    display: flex;
+    align-items: center;
+    background: #ffffff52;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.container_createTicket .left-section,
+.container_createTicket .right-section {
+    flex: 1;
+    padding: 10px;
+}
+
+.container_createTicket label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.container_createTicket input,
+textarea,
+.Creator {
+    font-family: 'Noto Sans Thai', sans-serif !important;
+    text-align: left;
+    width: 95%;
+    height: 45px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #ffffffb0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.container_createTicket textarea {
+    resize: none;
+    height: 420px
+}
+
+.container_createTicket input:focus,
+.container_createTicket textarea:focus {
+    outline: 3px solid #EACDA3;
+}
+
+.btn_Submit {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    border: 3px solid #00000037;
+    color: #333;
+    font-size: 18px;
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.btn_Submit:hover {
+    scale: 1.1;
+    background-image: linear-gradient(135deg, #e2d1c3 100% 0%, #fdfcfb 0%);
+}
